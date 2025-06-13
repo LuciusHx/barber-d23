@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar [color]="color ? color : 'primary'">
+    @if(backButton){
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="backButton"></ion-back-button>
+    </ion-buttons>
+    } @if(title){
+    <ion-title [ngClass]="{ 'ion-text-center': centerTitle }">{{
+      title
+    }}</ion-title>
+    }
+
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleTheme()">
+        <ion-icon
+          [name]="(darkMode$ | async) ? 'sunny' : 'moon'"
+          slot="icon-only"
+        >
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
