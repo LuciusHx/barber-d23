@@ -1,0 +1,24 @@
+.d-flex-center{
+    flex-direction: column;
+}
+
+ion-card {
+    padding: 2rem 1rem 4rem 1rem;
+}
+
+ion-text {
+    padding-left: 1rem;
+}
+
+@media (min-width: 769px) {
+  form {
+    width: 550px;
+  }
+}
+
+@media (max-width: 769px) {
+  form {
+    width: 100%;
+    margin: 0.5rem;
+  }
+}

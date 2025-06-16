@@ -3,11 +3,19 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+
 import { HeaderComponent } from './components/header/header.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
+import { LogoComponent } from './components/logo/logo.component';
 
 @NgModule({
-  exports: [HeaderComponent, CustomInputComponent, IonicModule],
+  exports: [
+    HeaderComponent,
+    CustomInputComponent,
+    IonicModule,
+    ReactiveFormsModule,
+    LogoComponent
+  ],
   imports: [
     CommonModule,
     IonicModule,
@@ -16,6 +24,7 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
     RouterModule,
     HeaderComponent,
     CustomInputComponent,
+    LogoComponent
   ],
 })
 export class SharedModule {}

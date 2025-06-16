@@ -1,3 +1,14 @@
-<p>
-  custom-input works!
-</p>
+<ion-item>
+  @if(icon){
+  <ion-icon [name]="icon" class="ion-padding-end" color="primary"></ion-icon>
+  }
+  <ion-input
+    [type]="type"
+    [formControl]="control"
+    [autocomplete]="autocomplete"
+  >
+    @if(isPassword){
+    <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+    }
+  </ion-input>
+</ion-item>

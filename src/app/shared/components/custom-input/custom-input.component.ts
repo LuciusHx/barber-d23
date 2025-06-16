@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -6,10 +7,22 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: './custom-input.component.html',
   styleUrls: ['./custom-input.component.scss'],
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonicModule, ReactiveFormsModule],
 })
 export class CustomInputComponent implements OnInit {
+  @Input() control: FormControl;
+  @Input() type: string;
+  @Input() autocomplete: string;
+  @Input() title: string;
+  @Input() icon: string;
+
+  isPassword: boolean;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.type == 'password') {
+      this.isPassword = true;
+    }
+  }
 }
