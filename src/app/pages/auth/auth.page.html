@@ -2,7 +2,7 @@
 <ion-content>
   <div class="container">
     <ion-card>
-      <div class="d-flex-center">
+      <div class="d-flex-center collum">
         <app-logo></app-logo>
         <form [formGroup]="form">
           <!-- ====== EMAIL =====  -->
@@ -47,6 +47,8 @@
           >
             ENTRAR
           </ion-button>
+          <ion-label>Não possui uma conta? </ion-label>
+          <a routerLink="/auth/cadastro">Cadastrar-se</a>
         </form>
       </div>
     </ion-card>

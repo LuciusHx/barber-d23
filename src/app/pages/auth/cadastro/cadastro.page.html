@@ -1,0 +1,83 @@
+<ion-content>
+  <app-header color="primary" title="Cadastro" backButton="/"></app-header>
+  <ion-content>
+    <div class="container">
+      <ion-card>
+        <div class="d-flex-center collum">
+          <app-logo></app-logo>
+          <form [formGroup]="form">
+            <!-- ========= NOME ============ -->
+            <app-custom-input
+              autocomplete="name"
+              type="text"
+              [control]="form.controls.name"
+              icon="person-outline"
+            ></app-custom-input>
+            @if(form.get('name')?.hasError('required') &&
+            form.get('name')?.touched){
+            <ion-text color="danger"> Esse campo é obrigatório! </ion-text>
+            } @if(form.get('name')?.hasError('name') &&
+            form.get('name')?.touched){
+            <ion-text color="danger"> Insira um Email válido! </ion-text>
+            }
+
+            <!-- ====== EMAIL =====  -->
+            <app-custom-input
+              autocomplete="email"
+              type="email"
+              [control]="form.controls.email"
+              icon="mail-outline"
+            ></app-custom-input>
+
+            @if(form.get('email')?.hasError('required') &&
+            form.get('email')?.touched){
+            <ion-text color="danger"> Esse campo é obrigatório! </ion-text>
+            } @if(form.get('email')?.hasError('email') &&
+            form.get('email')?.touched){
+            <ion-text color="danger"> Insira um Email válido! </ion-text>
+            }
+
+            <!-- ======= PASSWORD ====== -->
+            <app-custom-input
+              type="password"
+              [control]="form.controls.password"
+              icon="lock-closed-outline"
+            ></app-custom-input>
+
+            @if(form.get('password')?.hasError('required') &&
+            form.get('password')?.touched){
+            <ion-text color="danger"> Esse campo é obrigatório! </ion-text>
+            } @if(form.get('password')?.hasError('minlength') &&
+            form.get('password')?.touched){
+            <ion-text color="danger">
+              A senha deve ter pelo menos 8 caracteres
+            </ion-text>
+            }
+
+             <!-- ======= CONFIRM PASSWORD ====== -->
+            <app-custom-input
+              type="confirmPassword"
+              [control]="form.controls.confirmPassword"
+              icon="checkmark-circle-outline"
+            ></app-custom-input>
+
+            @if(form.get('confirmPassword')?.hasError('matchValues') &&
+            form.get('confirmPassword')?.touched){
+            <ion-text color="danger"> Esse campo é obrigatório! </ion-text>
+            }
+            <ion-button
+              
+              class="ion-margin-top"
+              expand="block"
+              fill="solid"
+              color="primary"
+              [disabled]="form.invalid"
+            >
+              CADASTRAR-SE
+            </ion-button>
+          </form>
+        </div>
+      </ion-card>
+    </div>
+  </ion-content>
+</ion-content>
