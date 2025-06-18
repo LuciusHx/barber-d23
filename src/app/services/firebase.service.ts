@@ -1,9 +1,18 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { User } from '../models/User.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
+   private auth = inject(AngularFireAuth);
 
-  constructor() { }
+  login(user: User){
+    return this.auth.signInWithEmailAndPassword(user.email, user.password)
+  }
+
+  cadastro(user: User){
+    return this.auth.createUserWithEmailAndPassword(user.email, user.password)
+  }
 }

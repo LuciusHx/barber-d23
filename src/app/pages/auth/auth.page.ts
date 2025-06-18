@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { User } from 'src/app/models/User.model';
 
 @Component({
   selector: 'app-auth',
@@ -17,7 +19,14 @@ export class AuthPage implements OnInit {
       Validators.minLength(8),
     ]),
   });
-  constructor() {}
+  constructor(private firebaseService: FirebaseService) {}
 
   ngOnInit() {}
+
+  submit() {
+    if (this.form.valid) {
+      this.firebaseService.login(this.form.value as User);
+      console.log('yes')
+    }
+  }
 }

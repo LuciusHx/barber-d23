@@ -37,12 +37,13 @@
             A senha deve ter pelo menos 8 caracteres
           </ion-text>
           }
-
           <ion-button
+            (click)="submit()"
             class="ion-margin-top"
             expand="block"
             fill="solid"
             color="primary"
+            [disabled]="form.invalid"
           >
             ENTRAR
           </ion-button>
