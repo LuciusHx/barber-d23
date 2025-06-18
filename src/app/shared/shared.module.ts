@@ -14,7 +14,8 @@ import { LogoComponent } from './components/logo/logo.component';
     CustomInputComponent,
     IonicModule,
     ReactiveFormsModule,
-    LogoComponent
+    LogoComponent,
+    CommonModule
   ],
   imports: [
     CommonModule,

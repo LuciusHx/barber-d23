@@ -1,3 +1,13 @@
 <div class="logo">
-  <img src="../../../../assets/images/logoD23.png" alt="Logo D23">
+  <img
+    *ngIf="!(darkMode$ | async)"
+    src="../../../../assets/images/logoD23.png"
+    alt="Logo D23 Verde"
+  />
+
+  <img
+    *ngIf="darkMode$ | async"
+    src="../../../../assets/images/logoD23branco.png"
+    alt="Logo D23 Branco"
+  />
 </div>
