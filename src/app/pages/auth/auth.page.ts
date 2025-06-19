@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FirebaseService } from 'src/app/services/firebase.service';
-import { User } from 'src/app/models/User.model';
+import { User } from 'src/app/models/user.model';
 import { UtilsService } from 'src/app/services/utils.service';
 import { RouterLink } from '@angular/router';
 

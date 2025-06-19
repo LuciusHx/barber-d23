@@ -54,19 +54,20 @@
             </ion-text>
             }
 
-             <!-- ======= CONFIRM PASSWORD ====== -->
+            <!-- ======= CONFIRM PASSWORD ====== -->
             <app-custom-input
-              type="confirmPassword"
+              type="password"
               [control]="form.controls.confirmPassword"
               icon="checkmark-circle-outline"
             ></app-custom-input>
 
-            @if(form.get('confirmPassword')?.hasError('matchValues') &&
+            @if(form.get('confirmPassword')?.hasError('noMatch') &&
             form.get('confirmPassword')?.touched){
-            <ion-text color="danger"> Esse campo é obrigatório! </ion-text>
+            <ion-text color="danger"> As senhas não iguais. </ion-text>
             }
+
             <ion-button
-              
+            (click)="submit()"
               class="ion-margin-top"
               expand="block"
               fill="solid"
