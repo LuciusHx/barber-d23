@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user.model';
+import { SharedModule } from 'src/app/shared/shared.module';
+
+import { CustomValidators } from 'src/app/utils/custom-validators';
+
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { CustomValidators } from 'src/app/utils/custom-validators';
 
 @Component({
   selector: 'app-cadastro',
@@ -42,11 +44,10 @@ export class CadastroPage implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      this.utilsService.presentLoading({message: 'Registrando...'})
+      this.utilsService.presentLoading({ message: 'Registrando...' });
       //then é uma promise, ele é chamado depois que o cadastro é concluído
-      this.firebaseService
-        .cadastro(this.form.value as User)
-        .then(async (res) => {
+      this.firebaseService.cadastro(this.form.value as User).then(
+        async (res) => {
           console.log(res);
           await this.firebaseService.updateUser({
             displayName: this.form.value.name,
@@ -55,14 +56,22 @@ export class CadastroPage implements OnInit {
           let user: User = {
             uid: res.user.uid,
             name: res.user.displayName,
-            email: res.user.email
-          }
-          this.utilsService.setElementInLocalStorage('user', user)
-          this.utilsService.routerLink("/tabs/home")
-          this.utilsService.dismissLoading()
-        }, error => {
-          console.log('o cadastro deu errado.')
-        });
+            email: res.user.email,
+          };
+          this.utilsService.setElementInLocalStorage('user', user);
+          this.utilsService.routerLink('/tabs/home');
+          this.utilsService.dismissLoading();
+          this.utilsService.presentToast({
+            message: `Seja Bem vindo(a) ${user.name} !`,
+            duration: 5000,
+            color: 'primary',
+            icon: 'checkmark-outline',
+          });
+        },
+        (error) => {
+          console.log('o cadastro deu errado.');
+        }
+      );
     }
   }
 }

@@ -33,11 +33,30 @@ export class AuthPage implements OnInit {
       this.utilsService.presentLoading({ message: 'Entrando...' });
       this.firebaseService.login(this.form.value as User).then(
         async (res) => {
+          let user: User = {
+            uid: res.user.uid,
+            name: res.user.displayName,
+            email: res.user.email,
+          };
+          this.utilsService.setElementInLocalStorage('user', user);
+          this.utilsService.routerLink('/tabs/home');
           this.utilsService.dismissLoading();
+          this.utilsService.presentToast({
+            message: 'Logado com sucesso.',
+            duration: 3000,
+            color: 'primary',
+            icon: 'checkmark-outline',
+          });
           this.form.reset();
         },
         (error) => {
           this.utilsService.dismissLoading();
+           this.utilsService.presentToast({
+            message: 'Erro ao tentar entrar.',
+            duration: 5000,
+            color: 'danger',
+            icon: 'close-outline',
+          });
         }
       );
     }
