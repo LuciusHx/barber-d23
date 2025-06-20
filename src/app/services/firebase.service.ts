@@ -23,14 +23,14 @@ export class FirebaseService {
 
   async logout() {
     await this.auth.signOut();
-    this.utilsService.routerLink('/auth')
+    this.utilsService.routerLink('/auth');
     localStorage.removeItem('user');
     this.utilsService.presentToast({
-            message: 'Logout efetuado com sucesso!',
-            duration: 5000,
-            color: 'warning',
-            icon: 'checkmark-outline',
-          });
+      message: 'Logout efetuado com sucesso!',
+      duration: 5000,
+      color: 'warning',
+      icon: 'checkmark-outline',
+    });
   }
 
   //dizer o usuario que está logado atualmente
