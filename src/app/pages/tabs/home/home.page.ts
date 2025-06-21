@@ -18,9 +18,4 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit() {}
-
-  async logout() {
-    this.firebaseService.logout();
-  }
-
 }

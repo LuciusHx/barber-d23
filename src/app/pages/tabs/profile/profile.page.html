@@ -1,13 +1,13 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <app-header title="Perfil"></app-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="ion-text-center">
+    <ion-icon name="person-circle-outline" class="avatar"></ion-icon>
+    <h2>{{ user.name }}</h2>
+    <div>{{ user.email }}</div>
+    <ion-button color="danger" shape="round" (click)="logout()">
+      <ion-icon slot="start" name="log-out-outline"></ion-icon>
+      Sair
+    </ion-button>
+  </div>
 </ion-content>

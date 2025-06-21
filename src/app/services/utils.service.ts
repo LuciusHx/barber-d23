@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {
+  AlertController,
   LoadingController,
   ToastController,
   ToastOptions,
@@ -13,7 +14,8 @@ export class UtilsService {
   constructor(
     private loadingController: LoadingController,
     private router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private alertController: AlertController
   ) {}
 
   // -------- LOADING ---------
@@ -45,5 +47,11 @@ export class UtilsService {
   async presentToast(options: ToastOptions) {
     const toast = await this.toastController.create(options);
     toast.present();
+  }
+
+  // -------- Alert Controll -----------
+  async presentAlert(options) {
+    const alert = await this.alertController.create(options);
+    await alert.present();
   }
 }

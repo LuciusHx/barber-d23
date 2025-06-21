@@ -27,7 +27,7 @@ export class FirebaseService {
     localStorage.removeItem('user');
     this.utilsService.presentToast({
       message: 'Logout efetuado com sucesso!',
-      duration: 5000,
+      duration: 4000,
       color: 'warning',
       icon: 'checkmark-outline',
     });
